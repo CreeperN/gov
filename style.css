@@ -1,0 +1,240 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Inter"
+}
+body{
+    background-color: #0e1527;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.popup{
+    width: 180px;
+    height: 4%;
+    background-color: #112438;
+    color: #b8dff3;
+    font-size: 12px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+.circle{
+    width: 10px;
+    height: 10px;
+    background-color: #22c55e;
+    border-radius: 100%;
+}
+
+.hadding{
+    color:#e5e7eb ;
+    font-size: 40px;
+    font-weight: 600;
+}
+.hadding2{
+    color: #848b99;
+}
+.haddingflex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flexbox_category{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    
+}
+.contact{
+   background-color: #f9fafb;
+    width: 43%;
+    height: 240px;
+    border-radius: 12px;
+
+}
+.contact_flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: space-evenly;
+}
+
+.contact_tittle{
+    font-weight: 600;
+    font-size: 25px;
+}
+.img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55px;
+    height: 55px;
+    font-size:27px;
+    border-radius: 100px;
+    color: white;
+   background: #2a9b44;
+background: linear-gradient(90deg, rgba(42, 155, 68, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(22, 145, 63, 1) 100%);
+}
+.contact_subtittle{
+    color: #7e8690;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.box{
+    background-color: #e5e7eb;
+    width: 89px;
+    border-radius: 16px;
+    color: #383e4b;
+    height: 24px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0e131f;
+}
+.time{
+    font-size: 11px;
+    color: #7a808d;
+}
+
+
+.information{
+    background-color: #f9fafb;
+    width: 43%;
+    height: 240px;
+    border-radius: 12px;
+}
+.img1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55px;
+    height: 55px;
+    font-size:27px;
+    border-radius: 100px;
+    color: white;
+background: #2a9b44;
+background: linear-gradient(90deg, rgba(42, 155, 68, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(22, 145, 63, 1) 100%);
+}
+.warning{
+    width: 86%;
+    height: 60px;
+    background-color: #1d263d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.interpol{
+    color: #e5e7eb;
+    font-size: 14px;
+    font-weight: 700;
+}
+.subtittle_warning{
+    color: #959ca9;
+    font-size: 13px;
+    
+}
+
+/* Animations and interaction details */
+/* Start elements slightly hidden; JS will add `body.loaded` to play entrance animations */
+.popup, .hadding, .hadding2, .flexbox_category > .contact, .flexbox_category > .information, .warning {
+    opacity: 0;
+    transform: translateY(6px);
+}
+
+body.loaded .popup {
+    animation: fadeInDown 600ms cubic-bezier(.2,.8,.2,1) both;
+    animation-delay: 100ms;
+}
+body.loaded .hadding {
+    animation: fadeInDown 700ms cubic-bezier(.2,.8,.2,1) both;
+    animation-delay: 180ms;
+}
+body.loaded .haddingflex .hadding2:nth-child(1) {
+    animation: fadeInDown 700ms both;
+    animation-delay: 260ms;
+}
+body.loaded .haddingflex .hadding2:nth-child(2) {
+    animation: fadeInDown 700ms both;
+    animation-delay: 320ms;
+}
+body.loaded .flexbox_category > .contact {
+    animation: popIn 700ms cubic-bezier(.2,.8,.2,1) both;
+    animation-delay: 380ms;
+}
+body.loaded .flexbox_category > .information {
+    animation: popIn 700ms cubic-bezier(.2,.8,.2,1) both;
+    animation-delay: 460ms;
+}
+body.loaded .warning {
+    animation: fadeInDown 700ms both;
+    animation-delay: 540ms;
+}
+
+/* Hover interactions */
+.contact, .information {
+    transition: transform 220ms ease, box-shadow 220ms ease;
+}
+.contact:hover, .information:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(2,6,23,0.35);
+}
+.contact .img, .information .img1 {
+    transition: transform 300ms ease;
+}
+.contact:hover .img, .information:hover .img1 {
+    transform: rotate(8deg) scale(1.03);
+}
+
+/* Subtle pulsing for popup indicator */
+.circle {
+    animation: blink 1.6s linear infinite;
+    will-change: opacity, transform;
+}
+.popup {
+    /* Let the JS-controlled entrance animation run; don't loop it */
+    animation: none;
+}
+
+/* Keyframes */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes popIn {
+    from { opacity: 0; transform: translateY(12px) scale(.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes blink {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: .25; transform: scale(.96); }
+}
+
+/* Respect user's motion preference */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
